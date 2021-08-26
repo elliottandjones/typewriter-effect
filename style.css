@@ -1,0 +1,178 @@
+:root {
+  --bg-color: hsl(49 37% 94%);
+  --typewriterSpeed: 4s;
+  --typewriterCharacters: 31;
+  --stypewriterSpeed: 6s;
+  --stypewriterCharacters: 35;
+}
+
+body {
+  font-family: "Inconsolata", monospace;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  gap: 20px;
+  place-content: center;
+  text-align: center;
+  background: var(--bg-color);
+}
+div {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+h1.heading {
+  /* font-size: clamp(1rem, 3vw + 1rem, 4rem); */
+  position: relative;
+  font-family: "Inconsolata", monospace;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+h1.emoji-heading {
+  /* font-size: clamp(1rem, 3vw + 1rem, 4rem); */
+  position: relative;
+  font-family: "Inconsolata", monospace;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-inline-start: 2rem;
+}
+
+h1.heading::before,
+h1.heading::after,
+h1.emoji-heading::before,
+h1.emoji-heading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* h1.animation::after {
+  width: 0.125em;
+  background: black;
+}
+h1.animation::before {
+  background: var(--bg-color);
+} */
+
+h1.heading::before {
+  background: var(--bg-color);
+  -webkit-animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+}
+h1.emoji-heading::before {
+  background: var(--bg-color);
+  -webkit-animation: typewriter var(--stypewriterSpeed) steps(var(--stypewriterCharacters)) 1s forwards;
+  animation: typewriter var(--stypewriterSpeed) steps(var(--stypewriterCharacters)) 1s forwards;
+}
+
+h1.heading::after {
+  width: 0.125em;
+  background: black;
+  -webkit-animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+h1.emoji-heading::after {
+  width: 0.125em;
+  background: black;
+  -webkit-animation: typewriter var(--stypewriterSpeed) steps(var(--stypewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--stypewriterCharacters)) infinite;
+  animation: typewriter var(--stypewriterSpeed) steps(var(--stypewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--stypewriterCharacters)) infinite;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(3rem);
+  -webkit-animation: fadeInUp 2s ease calc(var(--typewriterSpeed) - 1s) forwards;
+  animation: fadeInUp 2s ease calc(var(--typewriterSpeed) - 1s) forwards;
+}
+
+@-webkit-keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+@-webkit-keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1.text {
+  font-family: "Inconsolata", monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-right: 4px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  /* font-weight: normal; */
+}
+
+.animation {
+  animation: typewriter2 4s steps(var(--typewriterCharacters)) 1s 1 normal both,
+    blinkBorder 500ms steps(var(--typewriterCharacters)) infinite normal;
+}
+
+@keyframes typewriter2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(1rem * var(--typewriterCharacters));
+  }
+}
+
+@keyframes blinkBorder {
+  from {
+    border-right-color: black;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+/* #yt-link {
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.7);
+}
+#yt-link:hover, #yt-link:focus {
+  color: teal;
+} */
